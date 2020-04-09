@@ -1,0 +1,138 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    prometheus.io.scrape: "false"
+  creationTimestamp: "2020-01-25T13:53:45Z"
+  deletionGracePeriodSeconds: 30
+  deletionTimestamp: "2020-01-25T13:54:30Z"
+  generateName: valve-product-purchase-4-publish-57d55cd886-
+  labels:
+    faas_function: valve-product-purchase-4-publish
+    pod-template-hash: 57d55cd886
+  name: valve-product-purchase-4-publish-57d55cd886-rg4zz
+  namespace: openfaas-fn
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: valve-product-purchase-4-publish-57d55cd886
+    uid: 529a545a-a4d7-487e-af01-1414adb08039
+  resourceVersion: "11368965"
+  selfLink: /api/v1/namespaces/openfaas-fn/pods/valve-product-purchase-4-publish-57d55cd886-rg4zz
+  uid: 3407f46b-ae31-435d-ba93-5cdb66fb0a01
+spec:
+  containers:
+  - env:
+    - name: DBNAME
+      value: helloRetail
+    - name: HOST
+      value: mysql.default.svc.cluster.local
+    - name: PASS
+      value: xyz
+    - name: TABLE_CREDIT_CARDS_NAME
+      value: creditCardsName
+    - name: USER
+      value: abc
+    - name: fprocess
+      value: node index.js
+    image: prabkumar/valve-product-purchase-4-publish:latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: valve-product-purchase-4-publish
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-7pdfs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-7pdfs
+    secret:
+      defaultMode: 420
+      secretName: default-token-7pdfs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T13:53:45Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T13:54:02Z"
+    message: 'containers with unready status: [valve-product-purchase-4-publish]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T13:54:02Z"
+    message: 'containers with unready status: [valve-product-purchase-4-publish]'
+    reason: ContainersNotReady
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T13:53:45Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - image: prabkumar/valve-product-purchase-4-publish:latest
+    imageID: ""
+    lastState: {}
+    name: valve-product-purchase-4-publish
+    ready: false
+    restartCount: 0
+    started: false
+    state:
+      waiting:
+        reason: ContainerCreating
+  hostIP: 10.0.2.15
+  phase: Pending
+  podIP: 172.17.0.5
+  podIPs:
+  - ip: 172.17.0.5
+  qosClass: BestEffort
+  startTime: "2020-01-25T13:53:45Z"

@@ -1,0 +1,20 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.99.101:31112
+functions:
+  valve-product-photos-6-report:
+    lang: node10-express
+    handler: ./product-photos-6-report
+    image: prabkumar/valve-product-photos-6-report:latest
+    read_timeout: 500 # seconds
+    write_timeout: 500 # seconds
+    exec_timeout: 0s # disable
+    write_debug: true
+    environment:
+      DBNAME: 'helloRetail'
+      TABLE_PHOTO_ASSIGNMENTS_NAME: 'photoAssignmentTable'
+      TABLE_PHOTO_REGISTRATIONS_NAME: 'photoRegistrationTable'
+      HOST: 'mysql.default.svc.cluster.local'
+      USER: 'abc'
+      PASS: 'xyz'

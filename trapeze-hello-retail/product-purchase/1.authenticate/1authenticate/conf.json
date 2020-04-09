@@ -1,0 +1,26 @@
+{
+  "unsecLambda" : "/home/app/function/authenticate.js",
+  "secLambdaFullPath" : "/home/app/function/handlerjs",
+  "LOCALsecLambdaFullPath" : "/Users/kalpernas/serverless/hello-retail-secure/event-writer/secure-authenticate.js",
+  "handlers" : ["authenticate"],
+  "usingPO" : false,
+  "runFromGET" : true,
+  "processEnv" : [
+    "TABLE_AUTHENTICATION_NAME"
+  ],
+  "labels" : {
+    "bottom" : ["public"],
+    "public" : ["photog1", "photog2", "client1", "client2"],
+    "photog1" : ["owner"],
+    "photog2" : ["owner"],
+    "client1" : ["owner", "client1CC"],
+    "client2" : ["owner", "client2CC"],
+    "client1CC" : ["ccCompany"],
+    "client2CC" : ["ccCompany"],
+    "owner" : ["top"],
+    "ccCompany" : ["top"]
+  },
+  "host": "mysql.default.svc.cluster.local",
+  "user": "abc",
+  "pass": "xyz"
+}

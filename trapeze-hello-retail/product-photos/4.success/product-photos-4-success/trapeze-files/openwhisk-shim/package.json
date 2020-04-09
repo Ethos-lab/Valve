@@ -1,0 +1,24 @@
+{
+  "name": "openwhisk-shim",
+  "version": "1.1.7",
+  "description": "A secure execution shim for running Apache OpenWhisk functions while monitoring and maintaining IFC",
+  "main": "openwhisk-shim.js",
+  "dependencies": {
+    "auth": "file:../auth",
+    "aws-sdk": "^2.147.0",
+    "po-utils": "file:../po-utils",
+    "secure-kv-po": "file:../secure-kv-po",
+    "secure-kv-to": "file:../secure-kv-to",
+    "to-utils": "file:../to-utils",
+    "vm2": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "IFC",
+    "OpenWhisk"
+  ],
+  "author": "Kalev Alpernas <kalev.alp@gmail.com>",
+  "license": "ISC"
+}

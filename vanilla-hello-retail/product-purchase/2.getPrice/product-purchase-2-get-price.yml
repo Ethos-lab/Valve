@@ -1,0 +1,19 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.99.101:31112
+functions:
+  product-purchase-2-get-price:
+    lang: node10-express
+    handler: ./product-purchase-2-get-price
+    image: prabkumar/product-purchase-2-get-price:latest
+    read_timeout: 500 # seconds
+    write_timeout: 500 # seconds
+    exec_timeout: 0s # disable
+    write_debug: true
+    environment:
+      DBNAME: 'helloRetail'
+      TABLE_PRODUCT_PRICE_NAME: 'productPrice'
+      HOST: 'mysql.default.svc.cluster.local'
+      USER: 'abc'
+      PASS: 'xyz'

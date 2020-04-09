@@ -1,0 +1,135 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    prometheus.io.scrape: "false"
+  creationTimestamp: "2020-01-25T07:02:07Z"
+  generateName: product-photos-6-report-847864fccd-
+  labels:
+    faas_function: product-photos-6-report
+    pod-template-hash: 847864fccd
+  name: product-photos-6-report-847864fccd-c7gnr
+  namespace: openfaas-fn
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: product-photos-6-report-847864fccd
+    uid: f9b10ce0-32bc-4119-b7ef-dabe079cb742
+  resourceVersion: "11300559"
+  selfLink: /api/v1/namespaces/openfaas-fn/pods/product-photos-6-report-847864fccd-c7gnr
+  uid: b78c411f-1988-432f-92fa-a6f0a0295543
+spec:
+  containers:
+  - env:
+    - name: DBNAME
+      value: helloRetail
+    - name: HOST
+      value: mysql.default.svc.cluster.local
+    - name: PASS
+      value: xyz
+    - name: TABLE_PHOTO_ASSIGNMENTS_NAME
+      value: photoAssignmentTable
+    - name: TABLE_PHOTO_REGISTRATIONS_NAME
+      value: photoRegistrationTable
+    - name: USER
+      value: abc
+    - name: fprocess
+      value: node index.js
+    image: prabkumar/product-photos-6-report:latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: product-photos-6-report
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-7pdfs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-7pdfs
+    secret:
+      defaultMode: 420
+      secretName: default-token-7pdfs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T07:02:07Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T07:02:10Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T07:02:10Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T07:02:07Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://681622f847f1503950a7c4d75c52fb5646e5188fb3df990f293227fed6b702db
+    image: prabkumar/product-photos-6-report:latest
+    imageID: docker-pullable://prabkumar/product-photos-6-report@sha256:38b159b48e4ebb0183e1750b77c2316b76e36c1375ae7c187436ac9359e3f47b
+    lastState: {}
+    name: product-photos-6-report
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-01-25T07:02:08Z"
+  hostIP: 10.0.2.15
+  phase: Running
+  podIP: 172.17.0.5
+  podIPs:
+  - ip: 172.17.0.5
+  qosClass: BestEffort
+  startTime: "2020-01-25T07:02:07Z"

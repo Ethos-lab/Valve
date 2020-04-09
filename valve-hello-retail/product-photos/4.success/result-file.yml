@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    prometheus.io.scrape: "false"
+  creationTimestamp: "2020-01-25T15:20:54Z"
+  generateName: valve-product-photos-4-success-77d4dffc8c-
+  labels:
+    faas_function: valve-product-photos-4-success
+    pod-template-hash: 77d4dffc8c
+  name: valve-product-photos-4-success-77d4dffc8c-mkbrs
+  namespace: openfaas-fn
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: valve-product-photos-4-success-77d4dffc8c
+    uid: 2a6f911b-6534-4daa-b5ea-e5faae65bbdd
+  resourceVersion: "11383443"
+  selfLink: /api/v1/namespaces/openfaas-fn/pods/valve-product-photos-4-success-77d4dffc8c-mkbrs
+  uid: cb5b9021-d080-42ec-908f-fed66b981658
+spec:
+  containers:
+  - env:
+    - name: fprocess
+      value: node index.js
+    image: prabkumar/valve-product-photos-4-success:latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: valve-product-photos-4-success
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-7pdfs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-7pdfs
+    secret:
+      defaultMode: 420
+      secretName: default-token-7pdfs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:20:54Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:20:57Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:20:57Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:20:54Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://874bd73de89aa9911bc3f59986896398a608b66d5671fa0a5fe08f22249a26cb
+    image: prabkumar/valve-product-photos-4-success:latest
+    imageID: docker-pullable://prabkumar/valve-product-photos-4-success@sha256:90500fe8de12e2e7470b592065c8229c9737f73c31033f0ef3d8ededb21dc935
+    lastState: {}
+    name: valve-product-photos-4-success
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-01-25T15:20:55Z"
+  hostIP: 10.0.2.15
+  phase: Running
+  podIP: 172.17.0.5
+  podIPs:
+  - ip: 172.17.0.5
+  qosClass: BestEffort
+  startTime: "2020-01-25T15:20:54Z"

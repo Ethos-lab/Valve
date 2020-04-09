@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    prometheus.io.scrape: "false"
+  creationTimestamp: "2020-01-25T16:18:29Z"
+  generateName: valve-product-catalog-builder-6788c5bd9-
+  labels:
+    faas_function: valve-product-catalog-builder
+    pod-template-hash: 6788c5bd9
+  name: valve-product-catalog-builder-6788c5bd9-ht2zb
+  namespace: openfaas-fn
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: valve-product-catalog-builder-6788c5bd9
+    uid: 38a91a74-432b-414b-aade-ef843a014b3f
+  resourceVersion: "11392510"
+  selfLink: /api/v1/namespaces/openfaas-fn/pods/valve-product-catalog-builder-6788c5bd9-ht2zb
+  uid: 88cf8e38-8b34-409d-b057-9eb56c08a186
+spec:
+  containers:
+  - env:
+    - name: DBNAME
+      value: helloRetail
+    - name: HOST
+      value: mysql.default.svc.cluster.local
+    - name: PASS
+      value: xyz
+    - name: TABLE_PRODUCT_CATALOG_NAME
+      value: productCatalog
+    - name: TABLE_PRODUCT_CATEGORY_NAME
+      value: productCategory
+    - name: TABLE_PRODUCT_PRICE_NAME
+      value: productPrice
+    - name: USER
+      value: abc
+    - name: fprocess
+      value: node index.js
+    image: prabkumar/valve-trapeze-product-catalog-builder:latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: valve-product-catalog-builder
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-7pdfs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-7pdfs
+    secret:
+      defaultMode: 420
+      secretName: default-token-7pdfs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T16:18:29Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T16:18:34Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T16:18:34Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T16:18:29Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://b006366ccc056b46075ee323cf021f49c67d970286bd7613ece76434356ab2d3
+    image: prabkumar/valve-trapeze-product-catalog-builder:latest
+    imageID: docker-pullable://prabkumar/valve-trapeze-product-catalog-builder@sha256:08b40ea680adb224e4d06dd1c6a37ae3717e8b3f4715ade13ad155d7965296d8
+    lastState: {}
+    name: valve-product-catalog-builder
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-01-25T16:18:31Z"
+  hostIP: 10.0.2.15
+  phase: Running
+  podIP: 172.17.0.5
+  podIPs:
+  - ip: 172.17.0.5
+  qosClass: BestEffort
+  startTime: "2020-01-25T16:18:29Z"

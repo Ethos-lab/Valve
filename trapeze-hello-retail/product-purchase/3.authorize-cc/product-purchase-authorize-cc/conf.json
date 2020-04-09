@@ -1,0 +1,34 @@
+{
+  "unsecLambda" : "/home/app/function/authorize.js",
+  "secLambdaFullPath" : "/home/app/function/handler.js",
+  "LOCALsecLambdaFullPath" : "/Users/kalpernas/serverless/hello-retail-secure/event-writer/secure-authorize.js",
+  "handlers" : ["handler"],
+  "usingPO" : false,
+  "runFromGET" : true,
+  "processEnv" : [
+    "TABLE_CREDIT_CARDS_NAME"
+  ],
+  "declassifiers" : {
+    "callback" : {
+      "maxLabel" : "owner",
+      "minLabel" : "bottom",
+      "errCode" : "err => err",
+      "valueCode" : "value => {value.ifcLabel = labelHistory[0]; return value}"
+    }
+  },
+  "labels" : {
+    "bottom" : ["public"],
+    "public" : ["photog1", "photog2", "client1", "client2"],
+    "photog1" : ["owner"],
+    "photog2" : ["owner"],
+    "client1" : ["owner", "client1CC"],
+    "client2" : ["owner", "client2CC"],
+    "client1CC" : ["ccCompany"],
+    "client2CC" : ["ccCompany"],
+    "owner" : ["top"],
+    "ccCompany" : ["top"]
+  },
+  "host": "mysql.default.svc.cluster.local",
+  "user": "abc",
+  "pass": "xyz"
+}

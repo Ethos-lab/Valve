@@ -1,0 +1,25 @@
+{
+  
+    "data": {
+        "id": 1,
+        "schema": "com.nordstrom/product/create/1-0-0",
+        "brand": "POLO RALPH LAUREN",
+        "name": "Polo Ralph Lauren 3-Pack Socks",
+        "description": "PAGE:/s/polo-ralph-lauren-3-pack-socks/4579874",
+        "category": "Socks for Men"
+    },
+    "photographers": [
+        "1"
+    ],
+    "photographer": {
+        
+        
+        "updated": 1569800053499,
+        "updatedBy": "hello-retail/product-producer-automation",
+        "assignment": "1",
+        "id": "1"
+    },
+    "assigned": "true",
+    "assignmentComplete": "false",
+    "image":  "storedPhotosTable/1"
+}
