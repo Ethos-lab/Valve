@@ -1,0 +1,10 @@
+{
+    "schema": "com.nordstrom/retail-stream/1-0-0",
+    "origin": "hello-retail/product-producer-automation",
+    "timeOrigin": "2017-01-12T18:29:25.171Z",
+    "data": {
+      "schema": "com.nordstrom/product/image/1-0-0",
+      "id": "4579874",
+      "image": "erik.hello-retail.biz/i/p/4579874"
+   }
+}

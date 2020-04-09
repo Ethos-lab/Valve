@@ -1,0 +1,13 @@
+{
+	"data": {
+        "id": 1,
+        "schema": "com.nordstrom/product/create/1-0-0",
+        "brand": "POLO RALPH LAUREN",
+        "name": "Polo Ralph Lauren 3-Pack Socks",
+        "description": "PAGE:/s/polo-ralph-lauren-3-pack-socks/4579874",
+        "category": "Socks for Men"
+    },
+	"MediaUrl0": "https://newsroom.porsche.com/image/image_1080x624/f0276fe6-246a-4456-8ce8-072d186cc1e6.jpg",
+	"MediaContentType": "image/jpg",
+	"From": "200494"
+}

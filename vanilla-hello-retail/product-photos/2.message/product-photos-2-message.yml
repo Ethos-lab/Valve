@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.99.101:31112
+functions:
+  product-photos-2-message:
+    lang: node10-express
+    handler: ./product-photos-2-message
+    image: prabkumar/product-photos-2-message:latest

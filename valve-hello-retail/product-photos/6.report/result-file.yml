@@ -1,0 +1,143 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    prometheus.io.scrape: "false"
+  creationTimestamp: "2020-01-25T15:46:15Z"
+  deletionGracePeriodSeconds: 30
+  deletionTimestamp: "2020-01-25T15:47:01Z"
+  generateName: valve-product-photos-6-report-54b97df4-
+  labels:
+    faas_function: valve-product-photos-6-report
+    pod-template-hash: 54b97df4
+  name: valve-product-photos-6-report-54b97df4-xrfsh
+  namespace: openfaas-fn
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: valve-product-photos-6-report-54b97df4
+    uid: ab5f77ed-98b8-4e3e-be0f-3f7b9b0c14a3
+  resourceVersion: "11387702"
+  selfLink: /api/v1/namespaces/openfaas-fn/pods/valve-product-photos-6-report-54b97df4-xrfsh
+  uid: ee1a1b2b-34e5-4d47-b511-059df707aa05
+spec:
+  containers:
+  - env:
+    - name: DBNAME
+      value: helloRetail
+    - name: HOST
+      value: mysql.default.svc.cluster.local
+    - name: PASS
+      value: xyz
+    - name: TABLE_PHOTO_ASSIGNMENTS_NAME
+      value: photoAssignmentTable
+    - name: TABLE_PHOTO_REGISTRATIONS_NAME
+      value: photoRegistrationTable
+    - name: USER
+      value: abc
+    - name: fprocess
+      value: node index.js
+    image: prabkumar/valve-product-photos-6-report:latest
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: valve-product-photos-6-report
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /_/health
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-7pdfs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-7pdfs
+    secret:
+      defaultMode: 420
+      secretName: default-token-7pdfs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:46:15Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:46:32Z"
+    message: 'containers with unready status: [valve-product-photos-6-report]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:46:32Z"
+    message: 'containers with unready status: [valve-product-photos-6-report]'
+    reason: ContainersNotReady
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-01-25T15:46:15Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://3fea2fd8c9555d0dce928fbb092b54082d3c9a0b01bc55847bb8ab84f92cebf1
+    image: prabkumar/valve-product-photos-6-report:latest
+    imageID: docker-pullable://prabkumar/valve-product-photos-6-report@sha256:d2736c9ef06343bac021e5694c6919d2e0416484bfba0075c29c4158a745a9ab
+    lastState: {}
+    name: valve-product-photos-6-report
+    ready: false
+    restartCount: 0
+    started: false
+    state:
+      terminated:
+        exitCode: 0
+        finishedAt: null
+        startedAt: null
+  hostIP: 10.0.2.15
+  phase: Running
+  podIP: 172.17.0.5
+  podIPs:
+  - ip: 172.17.0.5
+  qosClass: BestEffort
+  startTime: "2020-01-25T15:46:15Z"

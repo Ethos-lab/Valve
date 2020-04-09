@@ -1,0 +1,24 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.99.101:31112
+functions:
+  product-catalog-builder:
+    lang: node10-express
+    handler: ./product-catalog-builder
+    image: prabkumar/product-catalog-builder:latest
+    read_timeout: 500 # seconds
+    write_timeout: 500 # seconds
+    exec_timeout: 0s # disable
+    write_debug: true
+    environment:
+      DBNAME: 'helloRetail'
+      TABLE_PRODUCT_CATEGORY_NAME: 'productCategory'
+      TABLE_PRODUCT_CATALOG_NAME: 'productCatalog'
+      TABLE_PRODUCT_PRICE_NAME: 'productPrice'
+      HOST: 'mysql.default.svc.cluster.local'
+      USER: 'abc'
+      PASS: 'xyz'
+      
+
+

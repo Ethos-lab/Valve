@@ -1,0 +1,28 @@
+{
+  "unsecLambda" : "/home/app/function/catalog.js",
+  "secLambdaFullPath" : "/home/app/function/handlerjs",
+  "handlers" : ["processKinesisEvent"],
+  "runFromGET" : true,
+  "usingPO" : false,
+  "processEnv" : [
+    "TABLE_PRODUCT_CATEGORY_NAME",
+    "TABLE_PRODUCT_CATALOG_NAME",
+    "TABLE_PRODUCT_PRICE_NAME"
+  ],
+  "labels" : {
+    "bottom" : ["public"],
+    "public" : ["photog1", "photog2", "client1", "client2"],
+    "photog1" : ["owner"],
+    "photog2" : ["owner"],
+    "client1" : ["owner", "client1CC"],
+    "client2" : ["owner", "client2CC"],
+    "client1CC" : ["ccCompany"],
+    "client2CC" : ["ccCompany"],
+    "owner" : ["top"],
+    "ccCompany" : ["top"]
+  },
+  "securityBound" : "public",
+  "host": "mysql.default.svc.cluster.local",
+  "user": "",
+  "pass": ""
+}
