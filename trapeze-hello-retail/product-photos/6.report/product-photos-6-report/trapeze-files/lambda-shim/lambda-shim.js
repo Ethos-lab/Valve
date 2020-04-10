@@ -28,6 +28,7 @@ const rmFilesInDir = function (dirPath) {
     catch(e) { }
 };
 
+
 const notEmptyDir = function (dirPath) {
     try {
         const files = fs.readdirSync(dirPath);
